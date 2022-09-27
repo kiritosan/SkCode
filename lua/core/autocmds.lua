@@ -50,3 +50,13 @@ autocmd('InsertLeave', {
     end
   end,
 })
+
+-- set the background of neovim to parent
+
+vim.cmd([[
+autocmd vimenter * highlight Normal guibg=none
+autocmd vimenter * highlight NonText guibg=none
+autocmd vimenter * highlight LineNr guibg=none
+autocmd vimenter * highlight Folded guibg=none
+autocmd vimenter * highlight EndOfBuffer guibg=none
+]])

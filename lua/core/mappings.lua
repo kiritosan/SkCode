@@ -25,12 +25,12 @@ M.telescope = function()
 end
 
 M.bufferline = function()
-  map('n', '<TAB>', ':BufferLineCycleNext <CR>')
+  map('n', '<leader><TAB>', ':BufferLineCycleNext <CR>')
   map('n', '<S-TAB>', ':BufferLineCyclePrev <CR>')
 end
 
 M.comment = function()
-  map('n', '<leader>/', ':lua require("Comment.api").toggle_current_linewise()<CR>')
+  map('n', '<leader>/', ':lua require("Comment.api").toggle.linewise.current(nil, {cfg})')
   map('v', '<leader>/', ':lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>')
 end
 
@@ -55,7 +55,7 @@ M.init = function()
   map('', '<Space>', '<Nop>')
   map('n', '<leader>x', ':lua skcode.close_buffer() <CR>')
   map('n', '<leader>w', '<cmd>w!<CR>')
-  map('n', '<leader>q', '<cmd>q!<CR>')
+  map('n', '<leader>q', '<cmd>q<CR>')
   map('n', '<space><cr>', '<cmd>noh<CR>')
   map('i', 'jk', '<ESC>')
 
@@ -84,7 +84,7 @@ M.lspconfig = function(bufnr)
   buf_map(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
   buf_map(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
   buf_map(bufnr, 'n', '<leader>ca', '<cmd>CodeActionMenu <CR>')
-  buf_map(bufnr, 'n', 'gl', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "single" })<CR>')
+  buf_map(bufnr, 'n', 'gl', '<cmd>lua vim.diagnostic.open_float({ border = "single" })<CR>')
   buf_map(bufnr, 'n', '[d', '<cmd>lua vim.diagnostic.goto_prev({ border = "single" })<CR>')
   buf_map(bufnr, 'n', ']d', '<cmd>lua vim.diagnostic.goto_next({ border = "single" })<CR>')
 end
